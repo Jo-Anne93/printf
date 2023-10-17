@@ -5,7 +5,6 @@ void print_buffer(char buffer[], int *buff_ind);
 /**
  * _printf - Printf function
  * @format: format.
- * by Joseph and Ciny
  * Return: Printed chars.
  */
 int _printf(const char *format, ...)
@@ -64,4 +63,4 @@ void print_buffer(char buffer[], int *buff_ind)
 		write(1, &buffer[0], *buff_ind);
 
 	*buff_ind = 0;
-
+}
