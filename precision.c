@@ -2,7 +2,7 @@
 
 /**
  * get_precision - calculates the precision for printing
- * by Jo-Anne and Ayokunle
+ * auto: Jo-Anne and Ayokunle
  * @format: Formatted string in which to print the arguments
  * @i: List of arguments to be printed.
  * @list: list of arguments.
