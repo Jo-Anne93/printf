@@ -4,7 +4,7 @@
 
 /**
  * print_char - Prints a char
- * auto: Jo-Anne and Ayokunle
+ * Auth: Jo-Anne and Ayokunle
  * @types: Lists of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
@@ -18,7 +18,7 @@ int print_char(va_list types, char buffer[],
 {
 	char c = va_arg(types, int);
 
-	return (handle_write_char_c(c, buffer, flags, width, precision, size));
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
 /************************* PRINT A STRING *************************/
 /**
@@ -51,7 +51,7 @@ int print_string(va_list types, char buffer[],
 	while (str[length] != '\0')
 		length++;
 
-	if (precision >= 0 && precision < lenght)
+	if (precision >= 0 && precision < length)
 		length = precision;
 
 	if (width > length)
@@ -166,12 +166,12 @@ int print_binary(va_list types, char buffer[],
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
 	a[0] = n / m;
-	for (i = 1, i < 32; i++)
+	for (i = 1; i < 32; i++)
 	{
 		m /= 2;
 		a[i] = (n / m) % 2;
 	}
-	for (i = 0, sum = 0, count = 0, i < 32; i++)
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];
 		if (sum || i == 31)
