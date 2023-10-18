@@ -52,5 +52,5 @@ The function _printf writes output to standard output. The function writes under
 
 	Authors
 * Ayokunle Ajisafe <https://github.com/kunle4luv>
-* Jo-Anne Khang
+* Jo-Anne Khang <https://github.com/Jo-Anne93/printf.git>
 
