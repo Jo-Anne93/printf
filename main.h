@@ -20,6 +20,7 @@
 
 /**
  * struct fmt - Struct op
+ * Auth: Jo-Anne and Kunle.
  *
  * @fmt: The format.
  * @fn: The funtion associated.
@@ -113,4 +114,4 @@ int is_digit(char);
 long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
-#endif
+#endif/*Header file*/
