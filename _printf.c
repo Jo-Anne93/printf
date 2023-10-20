@@ -1,67 +1,39 @@
 #include "main.h"
 
-void print_buffer(char buffer[], int *buff_ind);
 /**
- * _printf - A Printf function
- * Auth: Jo-Anne and Kunle.
+ * _printf - A function that prints formatted output to stdout.
+ * @format: The format string.
  *
- * @format: format.
- * Return: Printed chars.
+ * Return: The number of char printed.
  */
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
-	va_list list;
-	char buffer[BUFF_SIZE];
+	/* Variable declerations */
+	int i, counter = 0;
+	va_list ar;
+	va_start(ar, format);
 
-	if (format == NULL)
-		return (-1);
-
-	va_start(list, format);
-	
-	for (i = 0; format && format[i] != '\0'; i++)
+	/* Initializing of iterator of format */
+	i = 0;
+	/* iterate through each character in format argument*/
+	while(format[i])
 	{
-		if (format[i] != '%')
+		/*If a char is a "%", check the next char to determine format specifier*/
+		if (format[i] == '%')
 		{
-			buffer[buff_ind++] = format[i];
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
-			/*write(1, &format[i], 1);*/
-			printed_chars++;
+			/*check the next character after "%"*/
+			i++;
+			/* function that checks format specifier and returns number of char*/
+			counter = format_cases(format[i], ar, counter);
 		}
+		/*Else print the characters as they are or if it's not %*/
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
-			i++;
-			printed = handle_print(format, &i, list, buffer,
-					flags, width, precision, size);
-			if (printed == -1)
-				return (-1);
-			printed_chars += printed;
+			_putchar(format[i]);
+			counter++;
 		}
+		i++;
 	}
-
-	print_buffer(buffer, &buff_ind);
-
-	va_end(list);
-
-	return (printed_chars);
-}
-
-/**
- * print_buffer - Prints the contents of the buffer if it exist
- * @buffer: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
- */
-void print_buffer(char buffer[], int *buff_ind)
-{
-	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
-
-	*buff_ind = 0;
+	/*Return the total num of character printed*/
+	return (counter);
 }
