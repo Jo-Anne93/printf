@@ -10,7 +10,7 @@
  */
 int format_cases(char c,va_list ar, int count)
 {
-	int ch;
+	int ch, num;
 	char *str;
 
 	switch(c)
@@ -28,6 +28,17 @@ int format_cases(char c,va_list ar, int count)
 				str = "(nil)";
 			count += _puts(str);
 			break;
+		case 'd':
+		case 'i':
+			int num = va_arg(ar, int);
+			if (num < 0)
+			{
+				_putchar('-');
+				count++;
+				num = -num;
+			}
+			count += print_int(num);
+			break;
 		case '%':
 			/*for '%%', print a single '%'*/
 			_putchar('%');
@@ -37,8 +48,25 @@ int format_cases(char c,va_list ar, int count)
 			/*If an unknown format specifier is encounted, print '%' followed by the char*/
 			_putchar('%');
 			_putchar(c);
-			count++;
+			count += 2;
 			break;
 	}
 	return (count);
+}
+/************************* PRINT_INT *************************/
+/**
+ * print_int - A function that prints an integer
+ * @n: The integer to be printed
+ *
+ * Return: The number of characters printed.
+ */
+int print_int(int n)
+{
+	int count = 0;
+	if (n / 10)
+	{
+		count += print_int(n / 10);
+	}
+	_putchar('0' + n % 10);
+	return (count +1);
 }
