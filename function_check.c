@@ -1,6 +1,28 @@
 #include "main.h"
 #include <stdio.h>
 
+/************************* PRINT_UPPER_HEX *************************/
+/**
+ * print_upper_hex - A function that prints unsigned integer in
+ * uppercase hexadecimal format.
+ *
+ * Return: The number of character printed.
+ */
+int print_upper_hex(unsigned int h)
+{
+	int remainder, count = 0;
+	if (h / 16)
+	{
+		count += print_upper_hex(h / 16);
+	}
+	remainder = h % 16;
+	if (remainder <10)
+		_putchar('0' + remainder);
+	else
+		_putchar('A' + remainder - 10);
+	return (count + 1);
+}
+
 /**
  * format_cases - A function that handles different
  * format specifiers for formatted output.
@@ -13,7 +35,7 @@ int format_cases(char c,va_list ar, int count)
 	int ch;
 	int num;
 	char *str;
-	unsigned int print_bin;
+	unsigned int G_num;
 
 	switch(c)
 	{
@@ -41,10 +63,26 @@ int format_cases(char c,va_list ar, int count)
 			}
 			count += print_int(num);
 			break;
+		case 'u':
+			G_num = va_arg(ar, unsigned int);
+			count += print_int(G_num);
+			break;
+		case 'o':
+			G_num = va_arg(ar, unsigned int);
+			count += octal_print(G_num);
+			break;
+		case 'X':
+			G_num = va_arg(ar, unsigned int);
+			count += print_upper_hex(G_num);
+			break;
+		case 'x':
+			G_num = va_arg (ar, unsigned int);
+			count += print_hex(G_num);
+			break;
 		case 'b':
 			/* for 'b' format specifier to handle binary specifier*/
-			print_bin = va_arg(ar, unsigned int);
-			count += print_binary(print_bin);
+			G_num = va_arg(ar, unsigned int);
+			count += print_binary(G_num);
 			break;
 		case '%':
 			/*for '%%', print a single '%'*/

@@ -74,3 +74,39 @@ int print_binary(unsigned int n)
 	_putchar('0' + n % 2);
 	return (count + 1);
 }
+/************************* OCTAL_PRINT *************************/
+/**
+ * octal_print - A function which prints an unsigned integer in octal form.
+ * @i: the unsigned integer to be printed in octal.
+ *
+ * Return: The number of character printed.
+ */
+int octal_print(unsigned int i)
+{
+	int count = 0;
+	if (i / 8)
+	{
+		count += octal_print(i / 8);
+	}
+	_putchar('0' + i % 8);
+	return (count + 1);
+}
+/************************* PRINT_HEX *************************/
+/**
+ * print_hex - A function that prints an unsigned integer in lowercase
+ * hexadecimal form.
+ * @h: the unsigned integer to be printed in hexadecimal
+ * Return: The number of character printed.
+ */
+int print_hex(unsigned int h)
+{
+	int remainder, count = 0;
+	if (h / 16)
+	{
+		count += print_hex(h / 16);
+	}
+	remainder = h % 16;
+	if (remainder < 10)
+		_putchar('0' + remainder);
+	return (count + 1);
+}

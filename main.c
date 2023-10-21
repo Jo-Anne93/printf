@@ -21,5 +21,13 @@ int main(void)
     printf("Unknown:[%r]\n");
     _printf("Binary:[%b]\n", 42);
     printf("Binary:[%b]\n", 42);
+    _printf("Unsigned Integer:[%u]\n", 12345);
+    printf("Unsigned Integer:[%u]\n", 12345);
+    _printf("Octal:[%o]\n", 12345);
+    printf("Octal:[%o]\n", 12345);
+    _printf("Lowercase Hex:[%x]\n", 12345);
+    printf("Lowercase Hex:[%x]\n", 12345);
+    _printf("Uppercase Hex:[%X]\n", 12345);
+    printf("Uppercase Hex:[%X]\n", 12345);
     return (0);
 }
