@@ -10,7 +10,8 @@
  */
 int format_cases(char c,va_list ar, int count)
 {
-	int ch, num;
+	int ch;
+	int num;
 	char *str;
 
 	switch(c)
@@ -30,7 +31,7 @@ int format_cases(char c,va_list ar, int count)
 			break;
 		case 'd':
 		case 'i':
-			int num = va_arg(ar, int);
+			num = va_arg(ar, int);
 			if (num < 0)
 			{
 				_putchar('-');
