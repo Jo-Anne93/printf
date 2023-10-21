@@ -53,20 +53,3 @@ int format_cases(char c,va_list ar, int count)
 	}
 	return (count);
 }
-/************************* PRINT_INT *************************/
-/**
- * print_int - A function that prints an integer
- * @n: The integer to be printed
- *
- * Return: The number of characters printed.
- */
-int print_int(int n)
-{
-	int count = 0;
-	if (n / 10)
-	{
-		count += print_int(n / 10);
-	}
-	_putchar('0' + n % 10);
-	return (count +1);
-}
