@@ -19,5 +19,7 @@ int main(void)
     printf("Percent:[%%]\n");
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
+    _printf("Binary:[%b]\n", 42);
+    printf("Binary:[%b]\n", 42);
     return (0);
 }

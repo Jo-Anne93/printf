@@ -55,3 +55,22 @@ int print_int(int n)
         _putchar('0' + n % 10);
         return (count +1);
 }
+
+/************************* PRINT_BINARY *************************/
+/**
+ * print_binary - A function that prints an unsigned
+ * integer in binary form.
+ * @n: The unsigned interger to be printed in binary
+ *
+ * Return: The number of characters printed.
+ */
+int print_binary(unsigned int n)
+{
+	int count = 0;
+	if (n / 2)
+	{
+		count += print_binary(n / 2);
+	}
+	_putchar('0' + n % 2);
+	return (count + 1);
+}

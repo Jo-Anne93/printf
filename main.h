@@ -10,5 +10,6 @@ int _putchar(char c);
 int _puts(char *s);
 int format_cases(char c, va_list ar, int count);
 int print_int(int n);
+int print_binary(unsigned int n);
 
 #endif/*Header file*/

@@ -13,6 +13,7 @@ int format_cases(char c,va_list ar, int count)
 	int ch;
 	int num;
 	char *str;
+	unsigned int print_bin;
 
 	switch(c)
 	{
@@ -39,6 +40,11 @@ int format_cases(char c,va_list ar, int count)
 				num = -num;
 			}
 			count += print_int(num);
+			break;
+		case 'b':
+			/* for 'b' format specifier to handle binary specifier*/
+			print_bin = va_arg(ar, unsigned int);
+			count += print_binary(print_bin);
 			break;
 		case '%':
 			/*for '%%', print a single '%'*/
